@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kandang Ayam Pintar: Sistem Otomasi Cahaya, Suhu, dan Keamanan Berbasis IoT</title>
+  <script src="paho/mqttws31.min.js"></script>
+  <script src="paho/demo.js"></script>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #dfe1e5;
+      color: #2b2b2b;
+      margin: 0;
+      padding: 25px;
+    }
+
+    .main-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #333;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      color: #3b3b3b;
+      font-weight: bold;
+      margin-bottom: 10px;
+      border-left: 5px solid #6c6c6c;
+      padding-left: 12px;
+    }
+
+    .card {
+      background: #f5f5f5;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .relay-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .on-btn {
+      background: #6d6d6d;
+      color: #fff;
+    }
+    .on-btn:hover {
+      background: #5c5c5c;
+      transform: translateY(-2px);
+    }
+
+    .off-btn {
+      background: #b0b0b0;
+      color: #fff;
+    }
+    .off-btn:hover {
+      background: #9a9a9a;
+      transform: translateY(-2px);
+    }
+
+    .sensor-item {
+      font-size: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid #cfcfcf;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-title">
+    Kandang Ayam Pintar: Sistem Otomasi Cahaya, Suhu, dan Keamanan Berbasis IoT
+  </div>
+
+  <div class="card">
+    <h2>Relay Control</h2>
+
+    <div class="relay-grid">
+      <button class="on-btn" onclick="switchRelay(1,'on')">Relay 1 ON</button>
+      <button class="off-btn" onclick="switchRelay(1,'off')">Relay 1 OFF</button>
+
+      <button class="on-btn" onclick="switchRelay(2,'on')">Relay 2 ON</button>
+      <button class="off-btn" onclick="switchRelay(2,'off')">Relay 2 OFF</button>
+
+      <button class="on-btn" onclick="switchRelay(3,'on')">Relay 3 ON</button>
+      <button class="off-btn" onclick="switchRelay(3,'off')">Relay 3 OFF</button>
+
+      <button class="on-btn" onclick="switchRelay(4,'on')">Relay 4 ON</button>
+      <button class="off-btn" onclick="switchRelay(4,'off')">Relay 4 OFF</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Sensor Data</h2>
+
+    <div class="sensor-item">Temperature: <b><span id="temperature">-</span> °C</b></div>
+    <div class="sensor-item">Humidity: <b><span id="humidity">-</span> %</b></div>
+    <div class="sensor-item">IR Sensor: <b><span id="infrared">-</span></b></div>
+    <div class="sensor-item">Current Sensor: <b><span id="current">-</span> V</b></div>
+  </div>
+
+</body>
+</html>
